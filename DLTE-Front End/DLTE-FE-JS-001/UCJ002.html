@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI Banking</title>
+</head>
+<body>
+    <script>
+        let bankerName, bankerLocation, bankerID, bankerDOB, bankerAge, isEnglish
+        
+        
+
+        // alert("logged banker details are name:"+bankerName+" from "+bankerLocation+" authorized ID"+bankerID+" Date of Birth "+bankerDOB+" knows English: "+isEnglish)
+
+        
+        //event is onload
+        // event triggers the function
+        window.onload=function(){
+            bankerName=prompt("Let us know your name","")
+        bankerLocation=prompt("Let us know your location","")
+        bankerID=prompt("Let us know your ID","")
+        bankerDOB=prompt("Let us know your DOB","")
+        bankerAge=prompt("Let us know your Age","")
+        isEnglish=prompt("Do you know English","")
+
+        var view=document.getElementById("show")
+        view.innerHTML="logged banker details are name:"+bankerName+" from "+bankerLocation+" authorized ID"+bankerID+" Date of Birth "+bankerDOB+" age of "+bankerAge+" knows English: "+isEnglish
+        }
+        
+        alert(view.innerHTML)
+    </script>
+    <p id="show">Results will be shown here</p>
+</body>
+</html>

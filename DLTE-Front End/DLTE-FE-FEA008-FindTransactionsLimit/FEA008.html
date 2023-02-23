@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="/scripts/limit.js"></script>
+    <title>Transaction limit</title>
+</head>
+<body>
+    <div class="container-fluid bg-dark">
+        <div class="row justify-content-center">
+            <form name="limit" class="col-lg-5 card p-4 text-bg-light rounded-5 mt-2 me-3">
+                <h5 class="card-title text-bg-primary rounded-5 text-center p-2">Enter Transaction Details</h5>
+                <div class="form-group mt-3">
+                    <label>Transaction Amounts:</label>
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 1" name="amount1">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 2" name="amount2">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 3" name="amount3">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 4" name="amount4">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 5" name="amount5">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 6" name="amount6">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 7" name="amount7">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 8" name="amount8">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amount 9" name="amount9">
+                    <input multiple type="number" class="form-control mt-2" placeholder="Enter transaction amoun 10" name="amount10">
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <button type="submit" class="btn btn-outline-primary m-3" onclick="calculate()">Submit</button>
+                  <button type="reset" class="btn btn-outline-danger m-3">Reset</button>
+                </div>
+              </form>
+        </div>
+    </div>
+    
+</body>
+</html>

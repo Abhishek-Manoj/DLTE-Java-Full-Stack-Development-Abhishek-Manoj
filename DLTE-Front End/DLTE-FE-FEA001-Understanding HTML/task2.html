@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Health</title>
+    <style>
+        body{
+            background-color: lightblue;
+        }
+        .header{
+            display: flex;
+            justify-content: space-around;
+        }
+        h1{
+            color: navy;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            display: left;
+        }
+        .row{
+            display: flex;
+            justify-content: space-around;
+           
+        }
+        .col2row1{
+            align-self: flex-start;
+        }
+
+        .col2row2{
+            align-self: flex-end;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="shlogo.png"/>
+        <h1>STAR LIFE HEALTH INSURANCE</h1>
+    </div>
+    
+    <div class="row">
+        <div class="column1">
+            <video width="800px" height="600px" controls>
+                <source src="video1.mp4"/>
+            </video>
+        </div>
+        <div class="column2">
+            <div class="col2row1">
+                <video  width="350px" height="280px" controls>
+                    <source src="video2.mp4"/>
+                </video>
+            </div>
+            <br/>
+            <div class="col2row2">
+                <video  width="350px" height="280px" controls>
+                    <source src="video3.mp4"/>
+                </video>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

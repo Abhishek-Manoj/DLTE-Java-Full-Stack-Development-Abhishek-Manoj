@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3ede7348-1143-4e75-95f5-222992e771ad" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2M5ex6KPPTdb2l4gLGdMvvx6lLg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DLTE-Java-JV002-FindNChargesLessMinimumBalance" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ConsoleGpay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dlte.java.jv004.ConsoleGpay" />
+      <module name="DLTE-Java-JV004-ConsoleGPay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dlte.java.jv004.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ConsoleGpay" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ede7348-1143-4e75-95f5-222992e771ad" name="Default Changelist" comment="" />
+      <created>1677062113322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677062113322</updated>
+      <workItem from="1677062117045" duration="11514000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="446" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1677063050920">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="446" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1677063050920" />
+    <state x="421" y="92" key="FileChooserDialogImpl" timestamp="1677088017276">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="421" y="92" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1677088017276" />
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1677094133167">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1677094133167" />
+    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1677094133167">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1677094133167" />
+    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1677094133167">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1677094133167" />
+    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1677094133167">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1677094133167" />
+    <state x="91" y="39" key="new project wizard" timestamp="1677088047096">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="91" y="39" key="new project wizard/0.0.1280.672@0.0.1280.672" timestamp="1677088047096" />
+    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup" timestamp="1677068007036">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="303" y="-1" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1677068007036" />
+  </component>
+</project>

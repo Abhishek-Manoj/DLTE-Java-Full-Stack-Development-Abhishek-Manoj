@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/form.css">
+    <title>Know Your Client</title>
+</head>
+<body>
+    <div class="header">
+        <img src="files/sbilogo.png"/>
+        <h1 id="title">State Bank of India</h1>
+    </div>
+    <h3 class="head">KYC Application Form</h3>
+    <div class="container">
+        
+        <div class="child">
+            <form action="">
+                <div class="grp">
+                    <label>Name</label>
+                    <input type="text" name="fullname" placeholder="Customer Full Name">
+                </div>
+                <div class="grp">
+                    <label>PAN Card</label>
+                    <input type="text" name="pan" placeholder="PAN Number">
+                </div>
+                <!-- <div class="row"> -->
+                    <div class="grp">
+                        <label>Mobile No</label>
+                        <input type="text" name="number" placeholder="Mob No.">
+                    </div>
+                    <div class="grp">
+                        <label>Aadhar Number</label>
+                        <input type="text" name="email" placeholder="12-digit Number">
+                    </div>
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                    <div class="grp">
+                        <label>Address:</label>
+                        <textarea name="address" rows="4" cols="55"></textarea>
+                    </div>
+                    <div class="col">
+                        <label>Gender:</label>
+                        
+                        <input type="radio" name="gender" value="Male"/>
+                        <label>Male</label>
+                        
+                        <input type="radio" name="gender" value="Female"/>
+                        <label>Female</label>
+                        
+                        <input type="radio" name="gender" value="Others"/>
+                        <label>Others</label>
+                    </div>
+                    
+                <!-- </div> -->
+                <div class="grp">
+                    <label>Type of Account</label>
+                    <select name="account">
+                        <option value="Savings">Savings</option>
+                        <option value="Current">Current</option>
+                        <option value="NRI">NRI</option>
+                    </select>
+                </div>
+                <div class="btn">
+                    <input id="bt" type="submit" value="Submit"/>
+    
+                    <input id="bt" type="reset" value="Clear">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+</html>

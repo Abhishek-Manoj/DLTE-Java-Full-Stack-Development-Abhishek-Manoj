@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/files/fav.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>SBI - List of Transactions</title>
+</head>
+<body>
+     <!-- TITLE BAR AND LOGO -->
+     <nav class="col-lg-12 col-sm-0 navbar navbar-expand-lg navbar-light text-bg-light">
+        <div class="container-fluid">
+            <img class="col-lg-4 col-sm-12" src="/files/sbilogopng.png" width="400px" height="100px">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="FEA005home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="FEA005login.html">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="FEA005new.html">New Transactions</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="FEA005list.html">List of Transactions</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-info" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- Marquee moving left just below Nav Bar -->
+      <div class="text-warning">
+        <marquee direction="left" class="h-50 bg-danger">
+            <p>You can now create and update your transactions through the website. You can also view the list of transactions </p>
+        </marquee>
+      </div>
+
+      <!-- Table begins here -->
+      <div class="container bg-info p-3">
+        <div class="col-lg-12 sm-4">
+          <div class="table-responsive rounded-5">
+              <table class="table justify-content-center">
+                  <thead class="bg-primary">
+                    <tr>
+                      <th>Transaction ID</th>
+                      <th>Transaction Mode</th>
+                      <th>Transaction Type </th>
+                      <th>Transaction Amount</th>
+                      <th>Date</th>
+                      <th>Reciever</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-bg-light">
+                    <tr>
+                      <td>9886623</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>6000</td>
+                      <td>15/02/2023</td>
+                      <td>Aashish</td>
+                      <td>
+                          <i class="bi bi-pencil-fill"></i>
+                          <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>123124</td>
+                      <td>UPI</td>
+                      <td>debit</td>
+                      <td>90000</td>
+                      <td>16/02/2023</td>
+                      <td>Sheeba</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                       <td>1234567</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>4000</td>
+                      <td>15/02/2023</td>
+                      <td>Manoj</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                         <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>998976</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>7000</td>
+                      <td>15/02/2023</td>
+                      <td>Anu</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>775452</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>10000</td>
+                      <td>15/02/2023</td>
+                      <td>Dev</td>
+                      <td>
+                          <i class="bi bi-pencil-fill"></i>
+                          <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                       <td>2245265</td>
+                       <td>NEFT</td>
+                       <td>debit</td>
+                       <td>1000</td>
+                       <td>15/02/2023</td>
+                       <td>Kiran</td>
+                       <td>
+                           <i class="bi bi-pencil-fill"></i>
+                           <i class="bi bi-trash3-fill"></i>
+                       </td>
+                    </tr>
+                    <tr>
+                      <td>989764</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>70000</td>
+                      <td>15/02/2023</td>
+                      <td>Jose</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>12454265</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>5000</td>
+                      <td>15/02/2023</td>
+                      <td>Akhil</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>8658595</td>
+                      <td>NEFT</td>
+                      <td>debit</td>
+                      <td>8000</td>
+                      <td>15/02/2023</td>
+                      <td>Vinod</td>
+                      <td>
+                        <i class="bi bi-pencil-fill"></i>
+                        <i class="bi bi-trash3-fill"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

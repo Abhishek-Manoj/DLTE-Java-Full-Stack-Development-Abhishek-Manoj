@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>JQ Event</title>
+    <style>body {font-family: Arial, Helvetica, sans-serif;} label#calculate {background-color: yellow};</style>
+    </head>
+    <script>
+     $(document).ready(()=>{
+        $("body").css("background-color","gray")
+        $("#calculate").click(()=>{
+            const fname=$("#fullname").val()
+            const fprof=$("input[name=profession]").val()
+            const fsal=$(".salary").val()
+
+            var tax=0;
+            
+            // var salary=$(".salary").val()
+            if(fsal<=25000){
+                tax=0;
+            }
+            if(fsal>25000 && fsal<=50000) {
+                tax=(fsal-25000)*10/100;
+            }
+            if(fsal>50000 && fsal<=100000) {
+                tax=25000+(fsal-250000)*20/100;
+            }
+            if(fsal>100000){
+                tax=(25000+100000)+((fsal-100000)*30/100);
+            }
+            $(".taxi").val(fname+", "+fprof+" with salary "+fsal+" has to pay tax of "+tax)
+      });
+
+     });
+
+    
+    </script>
+</head>
+<body>
+    <input type="text" id="fullname" placeholder="Enter your fullname"/>
+    <input type="text" name="profession" placeholder="Enter profession"/>
+    <input type="number" class="salary" placeholder="Enter salary"/>
+    <input type="button" id="calculate" value="calculate"/>
+    <output class="taxi"></output>
+    
+
+    
+</body>
+</html>

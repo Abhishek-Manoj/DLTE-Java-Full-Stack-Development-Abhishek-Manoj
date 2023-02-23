@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Changing the Element Via jQuery DOM</title>
+    <script>
+        $(document).ready(()=>{
+            $("p").click(()=>{
+                $("p").text("Bootstrap better framework")
+            })
+            $("p").dblclick(()=>{
+                $("p").text("JQ more efficient than JS")
+            })
+            $("img").mouseenter(()=>{
+                $("img").attr("width","1000px")
+                $("img").attr("height","500px")
+
+            })
+            $("img").mouseleave(()=>{
+                $("img").attr("src","/files/sbi2.jpg")
+            })
+        })
+    </script>
+</head>
+<body>
+    <p>Lets do standard script</p>
+    <img src="/files/sbi3.jpg" width="400px" height="300px">
+</body>
+</html>
