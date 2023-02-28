@@ -1,6 +1,6 @@
 package dlte.assignment.javapart;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class ConsoleGpay {
 public static void main(String[] args) {
