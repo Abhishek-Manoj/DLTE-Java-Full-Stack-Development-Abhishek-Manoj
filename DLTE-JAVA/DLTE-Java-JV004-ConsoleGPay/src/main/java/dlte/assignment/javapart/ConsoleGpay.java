@@ -48,7 +48,7 @@ class Gpay{
     private Integer upi;
     private String name;
 
-    //Parameterised constructor
+    //Parameterised constructorr
     public Gpay(String accno, Integer balance, Integer upi, String name) {
         this.accno = accno;
         this.balance = balance;
