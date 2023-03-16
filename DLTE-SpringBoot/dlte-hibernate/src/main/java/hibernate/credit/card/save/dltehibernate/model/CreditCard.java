@@ -31,6 +31,4 @@ public class CreditCard {
     @Column(nullable = false)
     private int limit;
 
-//    public CreditCard implementationOfSave(CreditCard creditCard) {
-//    }
 }
