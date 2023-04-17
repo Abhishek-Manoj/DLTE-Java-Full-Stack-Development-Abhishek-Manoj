@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="/static/styles/styles1.css" rel="stylesheet" />
+    <title>Welcome | Login</title>
+</head>
+<script>
+    $(document).ready(function(){
+        $("#loginBtn").click(()=>{
+            const username = $("input[name=username]").val();
+            const password = $("input[name=password]").val();
+            // alert(username+" "+password)
+            $(".error").remove()
+            // alert(username+" "+password)
+            try{
+                if(username===""|| password === ""){
+                    throw "All fields are mandatory"
+                }
+                else if(!((/^([a-zA-Z]{3,})$/).test(username))){
+                    throw "Contain only letters (minimum of 3 characters)"
+                }
+            }
+            catch(errmsg){
+                $("#loginBtn").before("<p class=error>"+errmsg+"</p>")
+            }
+
+            $.post("http://localhost:8085/template/login",{
+                username: username,
+                password: password
+            },function (data) {
+                if (data == "Logged in successfully"){
+                    sessionStorage.setItem("logged",username)
+                    window.location.href = "http://localhost:8085/web/dashboard?user="+$("input[name=username]").val();
+                }
+                else {
+                    $("#loginBtn").before("<p class=error>"+data+"</p>")
+                }
+            })
+        })
+    })
+</script>
+<style>
+    .error{
+        color: red;
+    }
+    #loginBox{
+        height: 100vh;
+        max-width: 100vw;
+        /* display: flex;
+        align-content: center; */
+    }
+
+    .login-form {
+        width: 500px;
+        margin: 50px auto;
+        font-size: 15px;
+
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    #formTitle{
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bolder;
+    }
+</style>
+<body>
+<div class="container-fluid" id="loginBox">
+    <div class="row justify-content-center h-100">
+        <div class="col-lg-6 col-md-3 col-sm-0 bg-info-subtle justify-content-center">
+            <img src="/files/Vibebanklogo.png" class="ms-5 mt-2 p-3" height="120px" width="400px" />
+            <img src="/files/loginImage.avif" class="ms-5 p-3" height="400px" width="500px" />
+        </div>
+        <div class="col-lg-6 col-md-9 col-sm-12 bg-info h-100">
+            <h2 class="text-bg-primary w-50 text-light text-center mt-5 ms-5 rounded-2">Welcome User!</h2>
+            <div class="login-form w-75">
+                <form>
+                    <h2 class="text-center rounded-1 bg-success-subtle" id="formTitle">Log In</h2>
+                    <div class="form-group mt-4">
+                        <input type="text" class="form-control" placeholder="Username" required="required" name="username">
+                    </div>
+                    <div class="form-group mt-4 ">
+                        <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+                    </div>
+                    <div class="form-group mt-4">
+                        <button type="button" class="btn btn-success btn-block" id="loginBtn">Log in</button>
+                    </div>
+                    <div class="text-danger">
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </form>
+<!--                <p class="text-center"><a href="#">Create an Account</a></p>-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

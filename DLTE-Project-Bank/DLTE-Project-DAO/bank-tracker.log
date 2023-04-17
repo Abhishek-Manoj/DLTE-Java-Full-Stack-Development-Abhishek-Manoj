@@ -1,0 +1,87 @@
+2023-04-14 01:06:02.642  INFO 13880 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 13880 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 01:06:02.642  INFO 13880 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 01:06:03.248  INFO 13880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 01:06:03.297  INFO 13880 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2023-04-14 01:06:04.620  INFO 13880 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 01:06:04.620  WARN 13880 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 01:06:05.228  INFO 13880 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 01:06:05.432  WARN 13880 --- [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3315f46f-6a99-4950-a016-f4967b634d95
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-04-14 01:06:05.701  INFO 13880 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b0bd001, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@f9cab00, org.springframework.security.web.context.SecurityContextPersistenceFilter@2dd8ff1d, org.springframework.security.web.header.HeaderWriterFilter@3234474, org.springframework.security.web.csrf.CsrfFilter@7c663eaf, org.springframework.security.web.authentication.logout.LogoutFilter@5a936e64, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@36e43829, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3238e2aa, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@10272bbb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@999b951, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@36b9cb99, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2bfaba70, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@36d33f4, org.springframework.security.web.session.SessionManagementFilter@3d20e575, org.springframework.security.web.access.ExceptionTranslationFilter@6ef60295, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@39f5b723]
+2023-04-14 01:06:05.795  INFO 13880 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 3.471 seconds (JVM running for 4.577)
+2023-04-14 01:06:06.189  INFO 13880 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 01:06:06.205  INFO 13880 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 01:16:40.559  INFO 1512 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 1512 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 01:16:40.559  INFO 1512 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 01:16:41.039  INFO 1512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 01:16:41.055  INFO 1512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-04-14 01:16:42.182  INFO 1512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 01:16:42.187  WARN 1512 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 01:16:42.595  INFO 1512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 01:16:42.769  INFO 1512 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 2.507 seconds (JVM running for 3.544)
+2023-04-14 01:16:43.061  INFO 1512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 01:16:43.076  INFO 1512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 01:56:43.666  INFO 16152 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 16152 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 01:56:43.666  INFO 16152 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 01:56:44.168  INFO 16152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 01:56:44.184  INFO 16152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2023-04-14 01:56:45.373  INFO 16152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 01:56:45.388  WARN 16152 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 01:56:45.874  INFO 16152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 01:56:46.080  INFO 16152 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 2.732 seconds (JVM running for 3.775)
+2023-04-14 01:56:46.428  INFO 16152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 01:56:46.437  INFO 16152 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 01:57:17.466  INFO 7552 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 7552 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 01:57:17.469  INFO 7552 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 01:57:18.149  INFO 7552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 01:57:18.165  INFO 7552 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2023-04-14 01:57:19.489  INFO 7552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 01:57:19.489  WARN 7552 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 01:57:19.962  INFO 7552 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 01:57:20.176  INFO 7552 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 3.085 seconds (JVM running for 4.365)
+2023-04-14 01:57:20.512  INFO 7552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 01:57:20.517  INFO 7552 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 12:38:58.697  INFO 10424 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 10424 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 12:38:58.697  INFO 10424 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 12:38:59.342  INFO 10424 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 12:38:59.389  INFO 10424 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-04-14 12:39:00.757  INFO 10424 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 12:39:00.757  WARN 10424 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 12:39:01.266  INFO 10424 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 12:39:01.484  INFO 10424 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 3.162 seconds (JVM running for 4.285)
+2023-04-14 12:39:01.909  INFO 10424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 12:39:01.909  INFO 10424 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 13:02:29.488  INFO 14444 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 14444 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 13:02:29.488  INFO 14444 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 13:02:29.944  INFO 14444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 13:02:29.960  INFO 14444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-04-14 13:02:31.033  INFO 14444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 13:02:31.050  WARN 14444 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 13:02:31.473  INFO 14444 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 13:02:31.677  INFO 14444 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 2.42 seconds (JVM running for 3.226)
+2023-04-14 13:02:31.946  INFO 14444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 13:02:31.963  INFO 14444 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 15:31:49.331  INFO 15920 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 15920 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 15:31:49.331  INFO 15920 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 15:31:49.903  INFO 15920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 15:31:49.919  INFO 15920 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2023-04-14 15:31:51.198  INFO 15920 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 15:31:51.201  WARN 15920 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 15:31:51.755  INFO 15920 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 15:31:51.973  INFO 15920 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 2.978 seconds (JVM running for 4.517)
+2023-04-14 15:31:52.323  INFO 15920 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 15:31:52.335  INFO 15920 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-04-14 16:30:33.359  INFO 18020 --- [main] bank.project.dao.DaoApplicationTests     : Starting DaoApplicationTests using Java 1.8.0_292 on WPG02V1LQ with PID 18020 (started by xxmanoka in C:\DLTE-Full Stack Development\DLTE-Project-Bank\DLTE-Project-DAO)
+2023-04-14 16:30:33.359  INFO 18020 --- [main] bank.project.dao.DaoApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2023-04-14 16:30:34.188  INFO 18020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-04-14 16:30:34.208  INFO 18020 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2023-04-14 16:30:35.797  INFO 18020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-04-14 16:30:35.803  WARN 18020 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2023-04-14 16:30:36.462  INFO 18020 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-04-14 16:30:36.770  INFO 18020 --- [main] bank.project.dao.DaoApplicationTests     : Started DaoApplicationTests in 3.823 seconds (JVM running for 5.346)
+2023-04-14 16:30:37.222  INFO 18020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-04-14 16:30:37.238  INFO 18020 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
