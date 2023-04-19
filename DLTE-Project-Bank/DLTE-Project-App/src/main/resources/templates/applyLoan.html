@@ -11,7 +11,7 @@
     <title>Loan Application Form</title>
 </head>
 <script>
-    var user=sessionStorage.getItem("logged");
+    var user;
     // alert(user)
     var soapRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:bank=\"http://bank.project.soap\">\n" +
         "   <soapenv:Header/>\n" +
@@ -19,49 +19,64 @@
         "      <bank:listLoanRequest/>\n" +
         "   </soapenv:Body>\n" +
         "</soapenv:Envelope>"
-    function fetchDetails(){
-        $.ajax({
-            url: "http://localhost:8085/loanPoint",
-            type: "POST",
-            dataType: "xml",
-            contentType: "text/xml;charset=\"UTF-8\"",
-            data: soapRequest,
-            success: (data) => {
-                // alert(data)
-                $(data).find('ns2\\:loanScheme').each(function() {
-                    // var id = $(this).find('ns2\\:loanSchemeId').text();
-                    var type = $(this).find('ns2\\:loanSchemeType').text();
-                    var name = $(this).find('ns2\\:loanSchemeName').text();
-                    // var desc = $(this).find('ns2\\:loanSchemeDesc').text();
-                    // var roi = $(this).find('ns2\\:loanSchemeRoi').text();
-                    // console.log('name: ' + name + ', type: ' + type + ', desc: ' + desc + ', roi: '+ roi);
-                    $("#typeSelect").append("<option value='"+type+"'>"+name+"</option>");
-                });
-            },
-            error:()=>{
-                alert("error")
-            }
-        });
-    }
+    // function fetchDetails(){
+    //     $.ajax({
+    //         url: "http://localhost:8085/loanPoint",
+    //         type: "POST",
+    //         dataType: "xml",
+    //         contentType: "text/xml;charset=\"UTF-8\"",
+    //         data: soapRequest,
+    //         success: (data) => {
+    //             // alert(data)
+    //             $(data).find('ns2\\:loanScheme').each(function() {
+    //                 // var id = $(this).find('ns2\\:loanSchemeId').text();
+    //                 var type = $(this).find('ns2\\:loanSchemeType').text();
+    //                 var name = $(this).find('ns2\\:loanSchemeName').text();
+    //                 // var desc = $(this).find('ns2\\:loanSchemeDesc').text();
+    //                 // var roi = $(this).find('ns2\\:loanSchemeRoi').text();
+    //                 // console.log('name: ' + name + ', type: ' + type + ', desc: ' + desc + ', roi: '+ roi);
+    //                 $("#typeSelect").append("<option value='"+type+"'>"+name+"</option>");
+    //             });
+    //         },
+    //         error:()=>{
+    //             alert("error")
+    //         }
+    //     });
+    // }
 
-    $(function () {
-        fetchDetails()
-    })
+    // $(function () {
+    //     fetchDetails()
+    // })
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
     $(document).ready(function () {
         $("#applySubmit").click(()=>{
             // var type = $("select[name=loanType]").val()
             // alert(type)
+            var loanId = getUrlParameter('id');
             var loanAmount = $("input[name=loanAmount]").val()
             var loanTenure = $("input[name=loanTenure]").val()
-            var loanType = $("select[name=loanType]").val()
-            // $.get("http://localhost:8085/template//"+loanType,function (rateOfInterest) {
-            //     alert(rateOfInterest)
-            //     var monthlyInterest = rateOfInterest / 1200;
-            //     var emi = (loanAmount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -loanTerm));
+            $.get("http://localhost:8085/template/username",function (data) {
+                user = data
+            })
+            // console.log(loanId+" "+loanAmount+" "+loanTenure+" "+user)
             $.post("http://localhost:8085/template/createLoan", {
                 amount: loanAmount,
                 tenure: loanTenure,
-                type: loanType,
+                type: loanId,
                 customer : user,
             },function (data) {
                 alert(data)
@@ -92,13 +107,13 @@
                     <label>Tenure of Borrowal:</label>
                     <input type="text" class="form-control" placeholder="Enter " name="loanTenure" />
                 </div>
-                <div class="form-group mt-2 ms-3 me-3">
-                    <label>Loan Type:</label>
-                    <select class="form-control" name="loanType" id="typeSelect">
-<!--                        <option value="Housing">HemmaLan</option>-->
-<!--                        <option value="Education">StudieKredit</option>-->
-                    </select>
-                </div>
+<!--                <div class="form-group mt-2 ms-3 me-3">-->
+<!--                    <label>Loan Type:</label>-->
+<!--                    <select class="form-control" name="loanType" id="typeSelect">-->
+<!--&lt;!&ndash;                        <option value="Housing">HemmaLan</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option value="Education">StudieKredit</option>&ndash;&gt;-->
+<!--                    </select>-->
+<!--                </div>-->
                 <div class="d-flex justify-content-around">
                     <button type="button" id="applySubmit" class="btn btn-primary mt-2 mb-4">Submit</button>
                 </div>

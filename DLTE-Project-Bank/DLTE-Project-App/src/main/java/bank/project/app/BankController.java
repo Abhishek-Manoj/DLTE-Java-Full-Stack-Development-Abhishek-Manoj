@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -37,12 +39,16 @@ public class BankController {
 //        logger.info("callLogin Method started running");
 //        return bankService.userLogin(uname);
 //    }
+    @GetMapping("/username")
+    public String getUsername(Principal principal){
+        return principal.getName();
+    }
 
     @PostMapping("/createLoan")
-    public String applyLoan(@RequestParam("amount") float amount, @RequestParam("tenure") int tenure,@RequestParam("type") String type,@RequestParam("customer") String customer){
-        Long schemeId = bankService.getIdByScheme(type);
-        Long customerId = bankService.getIdByUsername(customer);
-        return bankService.addLoan(amount,tenure,schemeId,customerId);
+    public String applyLoan(@RequestParam("amount") float amount, @RequestParam("tenure") int tenure,@RequestParam("type") int type,@RequestParam("customer") String customer){
+//        Long schemeId = bankService.getIdByScheme(type);
+//        Long customerId = bankService.getIdByUsername(customer);
+        return bankService.addLoan(amount,tenure,type,customer);
     }
 
     @PostMapping("/login")

@@ -9,6 +9,9 @@ import org.springframework.jdbc.core.RowMapper;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -19,7 +22,7 @@ import java.util.ResourceBundle;
 
 
 @Service
-public class BankService implements BankOperations{
+public class BankService implements BankOperations, UserDetailsService {
     ResourceBundle bundle = ResourceBundle.getBundle("bank");
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -33,20 +36,15 @@ public class BankService implements BankOperations{
     @Override
     public Customer getByUsername(String uname) {
         try{
+            logger.info("Entered getByUsername() method");
             Customer customer = jdbcTemplate.queryForObject("select * from customer where username=?",new CustomerMapper(),uname);
             logger.info(customer.toString()+" has been returned to controller");
             return customer;
         }
-        catch (DataAccessException e){
-            logger.error("Exception occured in getByUsername method");
+        catch (Exception e){
+            logger.error("Exception occured in getByUsername method: "+e);
             return null;
         }
-    }
-
-    @Override
-    public String getStatus(Optional<Customer> customer) {
-        return null;
-//        return jdbcTemplate.queryForObject("select status from customer where username = ?",new Object[]{username},new BeanPropertyRowMapper<>(Customer.class)));
     }
 
     @Override
@@ -65,7 +63,8 @@ public class BankService implements BankOperations{
     }
 
     @Override
-    public String addLoan(float amount, int tenure, long loanSchemeId, long customerId) {
+    public String addLoan(float amount, int tenure, long loanSchemeId, String customer) {
+        Long customerId = getIdByUsername(customer);
         float roi = getRateOfInterest(loanSchemeId);
         float monthlyInterest = roi / 1200;
         double loanEmi = (amount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -tenure));
@@ -78,10 +77,10 @@ public class BankService implements BankOperations{
         return jdbcTemplate.query("select * from loan_scheme",new LoanSchemeMapper());
     }
 
-    @Override
-    public long getIdByScheme(String type) {
-        return jdbcTemplate.queryForObject("select loan_scheme_id from loan_scheme where loan_scheme_type=?",Long.class,type);
-    }
+//    @Override
+//    public long getIdByScheme(String type) {
+//        return jdbcTemplate.queryForObject("select loan_scheme_id from loan_scheme where loan_scheme_type=?",Long.class,type);
+//    }
 
     @Override
     public long getIdByUsername(String customer) {
@@ -94,14 +93,17 @@ public class BankService implements BankOperations{
     }
 
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Customer customer = getByUsername(username);
-//        if (customer == null){
-//            throw new UsernameNotFoundException(bundle.getString("userNotExist"));
-//        }
-//        return customer;
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.info("Entered loadByUsername() method");
+        Customer customer = getByUsername(username);
+
+        if (customer == null){
+            throw new UsernameNotFoundException(bundle.getString("userNotExist"));
+        }
+        logger.info("Leaving loadByUsername() method");
+        return customer;
+    }
 
     class LoanMapper implements RowMapper<Loan>{
 

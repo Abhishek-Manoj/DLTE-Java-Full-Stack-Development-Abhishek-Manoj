@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/web")
 public class MvcController {
-    @GetMapping("/")
+    @GetMapping("/login")
     public String landing(){
         return "index";
     }

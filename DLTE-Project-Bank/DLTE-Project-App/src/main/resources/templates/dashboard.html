@@ -27,13 +27,13 @@
             success: (data) => {
                 // alert(data)
                 $(data).find('ns2\\:loanScheme').each(function() {
-                    // var id = $(this).find('ns2\\:loanSchemeId').text();
+                    var id = $(this).find('ns2\\:loanSchemeId').text();
                     var type = $(this).find('ns2\\:loanSchemeType').text();
                     var name = $(this).find('ns2\\:loanSchemeName').text();
                     var desc = $(this).find('ns2\\:loanSchemeDesc').text();
                     var roi = $(this).find('ns2\\:loanSchemeRoi').text();
                     console.log('name: ' + name + ', type: ' + type + ', desc: ' + desc + ', roi: '+ roi);
-                    $("#dashTable").append("<tr><td>"+name+"</td><td>"+type+"</td><td>"+desc+"</td><td>"+roi+"</td></tr>");
+                    $("#dashTable").append("<tr><td>"+name+"</td><td>"+type+"</td><td>"+desc+"</td><td>"+roi+"</td><td><button type='button' class='btn btn-danger' onclick=\"applyFn("+id+")\">Apply</button></td></tr>");
                 });
             },
             error:()=>{
@@ -45,18 +45,21 @@
     $(function () {
         fetchDetails()
     })
-    $(document).ready(function(){
-        $("#applyLoan").click(()=>{
-            window.location.href = "http://localhost:8085/web/apply/";
-        })
-
-    })
+    function applyFn(id){
+        window.location.href = "http://localhost:8085/web/apply?id="+id;
+    }
+    // $(document).ready(function(){
+    //     $("#applyLoan").click(()=>{
+    //         window.location.href = "http://localhost:8085/web/apply/";
+    //     })
+    //
+    // })
 </script>
 <body class="bg-info-subtle">
 <div class="container">
     <div class="d-flex justify-content-between">
         <img src="/files/Vibebanklogo.png" height="100px" width="350px" />
-        <button type="button" class="btn btn-danger h-75 mt-4" id="logoutBtn">Log Out</button>
+        <button type="submit" class="btn btn-danger h-75 mt-4" value="/logout" id="logoutBtn">Log Out</button>
     </div>
     <div class="row justify-content-center">
         <h2 class="text-center bg-primary border-5 border-primary mt-2 rounded-3">AVAILABLE LOANS</h2>
@@ -68,6 +71,7 @@
             <th>Loan Type</th>
             <th>Loan Description</th>
             <th>Loan ROI</th>
+            <th>Option</th>
             </thead>
             <tbody class="bg-warning-subtle" id="dashTable">
 <!--            <tr>-->
