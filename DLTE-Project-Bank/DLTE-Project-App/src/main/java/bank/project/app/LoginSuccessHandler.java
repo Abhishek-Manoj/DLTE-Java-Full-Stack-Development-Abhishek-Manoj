@@ -2,6 +2,8 @@ package bank.project.app;
 
 import bank.project.dao.BankService;
 import bank.project.dao.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -18,6 +20,7 @@ import java.util.ResourceBundle;
 @Component
 public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     ResourceBundle resourceBundle = ResourceBundle.getBundle("bank");
+    Logger logger = LoggerFactory.getLogger(LoginSuccessHandler.class);
 
     @Autowired
     BankService bankService;
@@ -30,6 +33,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
             if(customer.getFailedAttempts()>0){
                 customer.setFailedAttempts(0);
                 bankService.loginSuccess(customer.getUsername());
+                logger.info(resourceBundle.getString("loginSuccess"));
             }
             super.setDefaultTargetUrl("/web/dashboard");
             super.onAuthenticationSuccess(request, response, authentication);

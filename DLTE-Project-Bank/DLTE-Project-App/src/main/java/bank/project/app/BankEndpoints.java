@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static java.util.Collections.addAll;
+
 @Endpoint
 public class BankEndpoints {
     private static final String url="http://bank.project.soap";
@@ -40,7 +42,7 @@ public class BankEndpoints {
             loansList.add(loan);
         }
 
-        response.getLoanScheme().addAll(loansList);
+        response.getLoan().addAll(loansList);
         logger.info(response.toString());
         return response;
     }
