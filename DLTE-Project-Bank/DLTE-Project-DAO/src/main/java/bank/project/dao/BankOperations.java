@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BankOperations {
-    List<Customer> listAll();
     public Customer getByUsername(String uname);
     public void updateAttempts(String username);
     public void updateStatus(String username);

@@ -32,8 +32,11 @@ public class BankEndpoints {
     public ListLoanResponse listLoanResponse(@RequestPayload ListLoanRequest listLoansRequest){
         ListLoanResponse response=new ListLoanResponse();
 
-        List<bank.project.dao.LoanScheme> loanSchemeList = bankService.listLoanSchemes();// pojo objects
-        List<soap.project.bank.LoanScheme> loansList=new ArrayList<>();// xml list of objects as of its empty
+        // All loan schemes from DAO
+        List<bank.project.dao.LoanScheme> loanSchemeList = bankService.listLoanSchemes();
+        //List to store Loan Schemes in XML format
+        List<soap.project.bank.LoanScheme> loansList=new ArrayList<>();
+
 
         Iterator<bank.project.dao.LoanScheme> it= loanSchemeList.iterator();
         while(it.hasNext()){
@@ -41,7 +44,7 @@ public class BankEndpoints {
             BeanUtils.copyProperties(it.next(),loan);
             loansList.add(loan);
         }
-
+        //Adding the loans to the response
         response.getLoan().addAll(loansList);
         logger.info(response.toString());
         return response;

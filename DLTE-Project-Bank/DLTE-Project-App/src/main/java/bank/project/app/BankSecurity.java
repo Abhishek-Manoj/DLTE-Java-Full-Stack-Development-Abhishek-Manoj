@@ -11,6 +11,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
+//Spring Security Configuration
 @Configuration
 public class BankSecurity {
 
@@ -32,14 +34,10 @@ public class BankSecurity {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests((requests)->{
-//            requests.antMatchers("/resources/static/files/**").permitAll();
-//            requests.antMatchers("/web/**","/template/**","/web/login/?error=**").authenticated();
-            requests.anyRequest().permitAll();
-        });
+        httpSecurity.authorizeRequests().antMatchers("/files/**","/web/login/**").permitAll(); //Permitting all files and login errors
+        httpSecurity.authorizeRequests().anyRequest().authenticated(); //All pages must be authenticated
         httpSecurity.formLogin().loginPage("/web/login").usernameParameter("username").failureHandler(loginFailureHandler).successHandler(loginSuccessHandler).permitAll();
-        httpSecurity.logout().logoutSuccessUrl("/web/login")
-                .permitAll();
+        httpSecurity.logout().permitAll();
         httpSecurity.csrf().disable();
 
         AuthenticationManagerBuilder builder=httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);

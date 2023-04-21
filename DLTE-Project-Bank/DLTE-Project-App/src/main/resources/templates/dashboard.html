@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,23 +47,25 @@
     function applyFn(id){
         window.location.href = "http://localhost:8085/web/apply?id="+id;
     }
-    // $(document).ready(function(){
-    //     $("#applyLoan").click(()=>{
-    //         window.location.href = "http://localhost:8085/web/apply/";
-    //     })
-    //
-    // })
 </script>
 <body class="bg-info-subtle">
 <div class="container">
-    <div class="d-flex justify-content-between">
-        <img src="/files/Vibebanklogo.png" height="100px" width="350px" />
-        <button type="submit" class="btn btn-danger h-75 mt-4" value="/logout" id="logoutBtn">Log Out</button>
+    <div class="row">
+        <!--        Bank Logo-->
+        <div class="col-lg-4">
+            <img src="/files/Vibebanklogo.png" height="100px" width="350px" />
+        </div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 d-flex flex-row-reverse">
+            <!--        Logout Button-->
+            <a th:href="@{/logout}"><button class="btn btn-danger mt-4 ms-2 float-end">Logout</button></a>
+        </div>
     </div>
     <div class="row justify-content-center">
         <h2 class="text-center bg-primary border-5 border-primary mt-2 rounded-3">AVAILABLE LOANS</h2>
     </div>
     <div class="row">
+<!--        Table to Display Loan Schemes-->
         <table class="table table-striped">
             <thead class="bg-warning">
             <th>Loan Name</th>
@@ -73,41 +75,9 @@
             <th>Option</th>
             </thead>
             <tbody class="bg-warning-subtle" id="dashTable">
-<!--            <tr>-->
-<!--                <td>StudieKredit</td>-->
-<!--                <td>Education</td>-->
-<!--                <td>a sum of money borrowed to finance post-secondary education or higher education-related expenses</td>-->
-<!--                <td>6</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>BilKredit</td>-->
-<!--                <td>Car</td>-->
-<!--                <td>for the purpose of purchasing a car or other motor vehicle</td>-->
-<!--                <td>4</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>HemmaLan</td>-->
-<!--                <td>Housing</td>-->
-<!--                <td>for the purpose of purchasing a home or other residential property</td>-->
-<!--                <td>2</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>GuldLan</td>-->
-<!--                <td>Gold</td>-->
-<!--                <td>borrower uses their gold jewelry, coins, or other gold assets as collateral to secure the loan</td>-->
-<!--                <td>15</td>-->
-<!--            </tr><tr>-->
-<!--                <td>Jordbruksfinans</td>-->
-<!--                <td>Agriculture</td>-->
-<!--                <td>help farmers and agricultural businesses finance their operations, purchase equipment or machinery, and expand their operations</td>-->
-<!--                <td>8</td>-->
-<!--            </tr>-->
             </tbody>
         </table>
     </div>
-<!--    <div class="row mt-3 justify-content-center">-->
-<!--        <button type="button" class="btn btn-success btn-block w-25" id="applyLoan">Apply For Loan</button>-->
-<!--    </div>-->
 </div>
 </body>
 </html>

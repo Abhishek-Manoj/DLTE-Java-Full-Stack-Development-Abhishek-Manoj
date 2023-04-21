@@ -12,39 +12,29 @@
     <title>Welcome | Login</title>
 </head>
 <script>
-    // $(document).ready(function(){
-    //     $("#loginBtn").click(()=>{
-    //         const username = $("input[name=username]").val();
-    //         const password = $("input[name=password]").val();
-    //         // alert(username+" "+password)
-    //         $(".error").remove()
-    //         // alert(username+" "+password)
-    //         try{
-    //             if(username===""|| password === ""){
-    //                 throw "All fields are mandatory"
-    //             }
-    //             else if(!((/^([a-zA-Z]{3,})$/).test(username))){
-    //                 throw "Contain only letters (minimum of 3 characters)"
-    //             }
-    //         }
-    //         catch(errmsg){
-    //             $("#loginBtn").before("<p class=error>"+errmsg+"</p>")
-    //         }
-    //
-    //         $.post("http://localhost:8085/template/login",{
-    //             username: username,
-    //             password: password
-    //         },function (data) {
-    //             if (data == "Logged in successfully"){
-    //                 sessionStorage.setItem("logged",username)
-    //                 window.location.href = "http://localhost:8085/web/dashboard?user="+$("input[name=username]").val();
-    //             }
-    //             else {
-    //                 $("#loginBtn").before("<p class=error>"+data+"</p>")
-    //             }
-    //         })
-    //     })
-    // })
+    $(document).ready(function(){
+        $("#loginBtn").click(()=>{
+            const username = $("input[name=username]").val();
+            const password = $("input[name=password]").val();
+            // alert(username+" "+password)
+            $(".error").remove()
+            // alert(username+" "+password)
+            try{
+                if(username===""|| password === ""){
+                    throw "All fields are mandatory"
+                }
+                else if (username === " " || password === " "){
+                    throw "Username must not contain white spaces"
+                }
+                else if(!((/^([a-zA-Z]{3,})$/).test(username))){
+                    throw "Contain only letters (minimum of 3 characters)"
+                }
+            }
+            catch(errmsg){
+                $("#responseMessage").append("<p class=error>"+errmsg+"</p>")
+            }
+        })
+    })
 </script>
 <style>
     .error{
@@ -89,33 +79,42 @@
 <body>
 <div class="container-fluid" id="loginBox">
     <div class="row justify-content-center h-100">
+<!--        Left Side-->
         <div class="col-lg-6 col-md-3 col-sm-0 bg-info-subtle justify-content-center">
-            <img src="/files/Vibebanklogo.png" class="ms-5 mt-2 p-3" height="120px" width="400px" />
+            <div class="row justify-content-center">
+<!--                Bank Logo-->
+                <img src="/files/Vibebanklogo.png" class="mt-2 p-3 w-75" height="120px" width="200px" />
+            </div>
             <img src="/files/loginImage.avif" class="ms-5 p-3" height="400px" width="500px" />
         </div>
+<!--        Right Side-->
         <div class="col-lg-6 col-md-9 col-sm-12 bg-info h-100">
-            <h2 class="text-bg-primary w-50 text-light text-center mt-5 ms-5 rounded-2">Welcome User!</h2>
+            <div class="row justify-content-center">
+                <h2 class="text-bg-primary w-50 text-light text-center mt-5 rounded-2">Welcome User!</h2>
+            </div>
             <div class="login-form w-75">
+<!--                Login Form-->
                 <form th:action="@{/web/login}" method="post">
                     <h2 class="text-center rounded-1 bg-success-subtle" id="formTitle">Log In</h2>
-                    <div class="form-group mt-4">
-                        <input type="text" class="form-control" placeholder="Username" required="required" name="username">
+                    <p class="text-danger">*All fields are mandatory</p>
+                    <div class="form-group mt-2">
+                        <label>Username:</label>
+                        <input type="text" class="form-control" placeholder="Enter username" required="required" name="username">
                     </div>
                     <div class="form-group mt-4 ">
-                        <input type="password" class="form-control" placeholder="Password" required="required" name="password">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" placeholder="Enter password" required="required" name="password">
                     </div>
                     <div class="form-group mt-4">
-                        <button type="submit" class="btn btn-success btn-block" id="loginBtn">Log in</button>
+                        <button type="submit" class="btn btn-success btn-block w-100" id="loginBtn">Log in</button>
                     </div>
-                    <div th:if="${param.error}">
-                        <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+                    <div th:if="${param.error}" id="responseMessage" class="mt-2">
+                        <p class="text-danger" >[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
                     </div>
-                    <div class="d-flex justify-content-between mt-3">
-                        <label class="form-check-label"><input type="checkbox"> Remember me</label>
-                        <a href="#">Forgot Password?</a>
-                    </div>
+<!--                    <div class="d-flex justify-content-center mt-3">-->
+<!--                        <a href="#">Forgot Password?</a>-->
+<!--                    </div>-->
                 </form>
-<!--                <p class="text-center"><a href="#">Create an Account</a></p>-->
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//POJO for Loan Scheme Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

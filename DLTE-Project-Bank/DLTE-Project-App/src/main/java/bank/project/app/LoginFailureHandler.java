@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     ResourceBundle resourceBundle = ResourceBundle.getBundle("bank");
     Logger logger = LoggerFactory.getLogger(LoginFailureHandler.class);
-    int counter = 3;
     @Autowired
     BankService bankService;
 

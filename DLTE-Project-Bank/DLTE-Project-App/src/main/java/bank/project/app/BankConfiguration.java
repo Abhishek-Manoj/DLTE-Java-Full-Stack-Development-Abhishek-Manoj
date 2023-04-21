@@ -2,7 +2,6 @@ package bank.project.app;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -13,9 +12,7 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletRegistration;
-
+//Configs for SOAP API
 @EnableWs
 @Configuration
 public class BankConfiguration extends WsConfigurerAdapter {

@@ -3,23 +3,16 @@ package bank.project.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
-
 
 @Service
 public class BankService implements BankOperations, UserDetailsService {
@@ -28,11 +21,8 @@ public class BankService implements BankOperations, UserDetailsService {
     private JdbcTemplate jdbcTemplate;
 
     private Logger logger= LoggerFactory.getLogger(BankService.class);
-    @Override
-    public List<Customer> listAll() {
-        return jdbcTemplate.query("select * from customer", new CustomerMapper());
-    }
 
+//    Retrieves the Customer details when username is provided
     @Override
     public Customer getByUsername(String uname) {
         try{
@@ -47,52 +37,60 @@ public class BankService implements BankOperations, UserDetailsService {
         }
     }
 
+//    Updates the attempts value by 1 for each incorrect password entry
     @Override
     public void updateAttempts(String username) {
         jdbcTemplate.update("update customer set failed_attempts = failed_attempts+1 where username=?",username);
     }
 
+//    Updates the status of the customer when the customer enters incorrect password thrice
     @Override
     public void updateStatus(String username) {
         jdbcTemplate.update("update customer set customer_status = 'inactive' where username = ?",username);
     }
 
+//    Resets the failed attempts value to 0 when the login is successful
     @Override
     public void loginSuccess(String username) {
         jdbcTemplate.update("update customer set failed_attempts = 0 where username = ?",username);
     }
 
+//    Adds the loan details to the loan table
     @Override
     public String addLoan(float amount, int tenure, long loanSchemeId, String customer) {
         Long customerId = getIdByUsername(customer);
         float roi = getRateOfInterest(loanSchemeId);
         float monthlyInterest = roi / 1200;
         double loanEmi = (amount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -tenure));
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("")
         jdbcTemplate.update("insert into loan values(loan_app_id_seq.NEXTVAL,?,?,?,?,?)",amount,loanEmi,loanSchemeId,customerId,tenure);
         return "loanApplied";
     }
 
+//    Lists the available loan schemes
     @Override
     public List<LoanScheme> listLoanSchemes() {
         return jdbcTemplate.query("select * from loan_scheme",new LoanSchemeMapper());
     }
 
-//    @Override
-//    public long getIdByScheme(String type) {
-//        return jdbcTemplate.queryForObject("select loan_scheme_id from loan_scheme where loan_scheme_type=?",Long.class,type);
-//    }
-
+//    Retrieves the ID of the customer based on username
     @Override
     public long getIdByUsername(String customer) {
-        return jdbcTemplate.queryForObject("select customer_id from customer where username=?",Long.class,customer);
+        Long customerID = jdbcTemplate.queryForObject("select customer_id from customer where username=?",Long.class,customer);
+        logger.info(customerID.toString());
+        return customerID;
     }
 
+//    Retrieves the Rate of Interest of the Loan based on Loan Scheme ID
     @Override
     public float getRateOfInterest(long id) {
-        return jdbcTemplate.queryForObject("select loan_scheme_roi from loan_scheme where loan_scheme_id=?",Float.class,id);
+        float interest = jdbcTemplate.queryForObject("select loan_scheme_roi from loan_scheme where loan_scheme_id=?",Float.class,id);
+        logger.info(interest+"");
+        return interest;
     }
 
 
+//    Performs the Login Authentication
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Entered loadByUsername() method");
@@ -102,24 +100,29 @@ public class BankService implements BankOperations, UserDetailsService {
             throw new UsernameNotFoundException(bundle.getString("userNotExist"));
         }
         logger.info("Leaving loadByUsername() method");
+        if (customer.getCustomerStatus().equalsIgnoreCase("inactive")){
+            throw new UsernameNotFoundException(bundle.getString("accDeactivated"));
+        }
         return customer;
     }
 
-    class LoanMapper implements RowMapper<Loan>{
+//    Mapper fo
+//    class LoanMapper implements RowMapper<Loan>{
+//
+//        @Override
+//        public Loan mapRow(ResultSet rs, int rowNum) throws SQLException {
+//            Loan loan = new Loan();
+//            loan.setLoanAppId(rs.getLong("loan_app_id"));
+//            loan.setLoanAmount(rs.getFloat("loan_amount"));
+//            loan.setLoanEmi(rs.getFloat("loan_emi"));
+//            loan.setLoanSchemeId(rs.getLong("loan_scheme_id"));
+//            loan.setCustomerId(rs.getLong("customer_id"));
+//            loan.setLoanTenure(rs.getInt("loan_tenure"));
+//            return loan;
+//        }
+//    }
 
-        @Override
-        public Loan mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Loan loan = new Loan();
-            loan.setLoanAppId(rs.getLong("loan_app_id"));
-            loan.setLoanAmount(rs.getFloat("loan_amount"));
-            loan.setLoanEmi(rs.getFloat("loan_emi"));
-            loan.setLoanSchemeId(rs.getLong("loan_scheme_id"));
-            loan.setCustomerId(rs.getLong("customer_id"));
-            loan.setLoanTenure(rs.getInt("loan_tenure"));
-            return loan;
-        }
-    }
-
+//    Mapper class for Customer POJO
     class CustomerMapper implements RowMapper<Customer> {
 
         @Override
@@ -137,6 +140,7 @@ public class BankService implements BankOperations, UserDetailsService {
         }
     }
 
+//    Mapper class for Loan Scheme POJO
     class LoanSchemeMapper implements RowMapper<LoanScheme> {
 
         @Override
