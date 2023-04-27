@@ -1,0 +1,6 @@
+
+1.How to retrieve customers who are not added as payees in payee table?
+2.Combination of two columns can be made UNIQUE or not?
+3.How the spring security flow works? when you click login button, where does the control move
+4.Property file should be different for both projects.
+5.JDK 8 features

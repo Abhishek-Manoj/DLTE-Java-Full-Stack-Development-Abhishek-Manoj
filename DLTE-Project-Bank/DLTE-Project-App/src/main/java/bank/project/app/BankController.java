@@ -1,7 +1,6 @@
 package bank.project.app;
 
 import bank.project.dao.BankService;
-import bank.project.dao.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.ResourceBundle;
 
 //REST API Controller
@@ -31,8 +29,8 @@ public class BankController {
 
     //Adding New Loan to Loan Table
     @PostMapping("/createLoan")
-    public String applyLoan(@RequestParam("amount") float amount, @RequestParam("tenure") int tenure,@RequestParam("type") int type,@RequestParam("customer") String customer){
+    public String applyLoan(@RequestParam("amount") float amount, @RequestParam("tenure") int tenure,@RequestParam("type") Long schemeId,@RequestParam("customer") String customer){
         logger.info("Entered applyLoan() method");
-        return bundle.getString(bankService.addLoan(amount,tenure,type,customer));
+        return bundle.getString(bankService.addLoan(amount,tenure,schemeId,customer));
     }
 }

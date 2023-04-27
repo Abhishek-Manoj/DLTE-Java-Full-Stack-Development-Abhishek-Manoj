@@ -41,6 +41,7 @@ public class BankSecurity {
         httpSecurity.csrf().disable();
 
         AuthenticationManagerBuilder builder=httpSecurity.getSharedObject(AuthenticationManagerBuilder.class);
+
         builder.userDetailsService(bankService);
         authenticationManager=builder.build();
         httpSecurity.authenticationManager(authenticationManager);

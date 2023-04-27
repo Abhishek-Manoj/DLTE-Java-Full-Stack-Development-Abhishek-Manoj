@@ -1,0 +1,12 @@
+tables
+loan
+customer
+admin
+customer_loan_mapper
+
+JSP
+Login Page for admin
+On succesful login -> dashboard
+dashboard contains loans of all customers
+on selecting each loan, more details about the loan should be displayed
+Filtering based on amount and date.

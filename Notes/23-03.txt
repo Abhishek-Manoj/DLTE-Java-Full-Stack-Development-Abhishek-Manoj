@@ -1,0 +1,11 @@
+Interface is just used for mocking.
+Service should be tested (Implementation of the interface).
+
+lenient() will 
+
+Create the JavaEE version of previous week's program
+Data -> JSP -> Servlet -> Database.
+Create two tables - Student, Address
+
+Logging
+Session

@@ -37,7 +37,7 @@ public class BankEndpoints {
         //List to store Loan Schemes in XML format
         List<soap.project.bank.LoanScheme> loansList=new ArrayList<>();
 
-
+        //Iterator used to iterate through the list of records
         Iterator<bank.project.dao.LoanScheme> it= loanSchemeList.iterator();
         while(it.hasNext()){
             soap.project.bank.LoanScheme loan = new soap.project.bank.LoanScheme();// XSD POJO

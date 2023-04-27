@@ -1,0 +1,22 @@
+naming standard
+coding standard
+comments
+dao
+testing
+security
+web service implementation
+Code execution & Debugging
+
+
+
+Exception Handling wherever necessary
+Testing - Controller 
+Spring Security (done)
+Add timestamp to loan table
+shrinidhi error(login)
+
+
+UI Changes
+1. While applying loan, display the loan details. - DONE
+2. Make UI enhancements - Partially done
+3. Look and feel should be made - 

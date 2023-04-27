@@ -1,0 +1,22 @@
+Relations in JPA
+	One to One
+	One to Many
+	Many to One
+	Many to many
+
+KYC:
+Beneficiaries:
+KYC_Beneficiary
+
+
+Dependencies Required:
+Oracle Driver
+Lombok
+Spring Data JPA
+Dev Tools
+Spring Web
+
+Configure appliction.properties
+Make Entities
+
+ADD/IDfy/11061042

@@ -27,20 +27,33 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         String username = request.getParameter("username");
         Customer customer = bankService.getByUsername(username);
+        //Check if the customer exists
         if(customer!=null){
+//          if the customer exists
             if(customer.getCustomerStatus().equalsIgnoreCase("inactive")) {
                 exception = new LockedException(resourceBundle.getString("accDeactivated"));
                 logger.info(resourceBundle.getString("accDeactivated"));
                 super.setDefaultFailureUrl("/web/login/?error="+resourceBundle.getString("accDeactivated"));
             }
             else {
-                bankService.updateAttempts(customer.getUsername());
-                logger.info(resourceBundle.getString("passIncorrect"));
-                exception = new LockedException(resourceBundle.getString("passIncorrect"));
-                super.setDefaultFailureUrl("/web/login/?error="+resourceBundle.getString("passIncorrect"));
-                if(customer.getFailedAttempts()+1==3) {
+                if (customer.getFailedAttempts()==0){
+                    bankService.updateAttempts(customer.getUsername());
+                    logger.info(resourceBundle.getString("passIncorrect")+resourceBundle.getString("twoAttempts"));
+                    exception = new LockedException(resourceBundle.getString("passIncorrect")+resourceBundle.getString("twoAttempts"));
+                    super.setDefaultFailureUrl("/web/login/?error="+resourceBundle.getString("passIncorrect")+resourceBundle.getString("twoAttempts"));
+                }
+                else if (customer.getFailedAttempts()==1){
+                    bankService.updateAttempts(customer.getUsername());
+                    logger.info(resourceBundle.getString("passIncorrect")+resourceBundle.getString("oneAttempt"));
+                    exception = new LockedException(resourceBundle.getString("passIncorrect")+resourceBundle.getString("oneAttempt"));
+                    super.setDefaultFailureUrl("/web/login/?error="+resourceBundle.getString("passIncorrect")+resourceBundle.getString("oneAttempt"));
+                }
+                else if(customer.getFailedAttempts()==2) {
                     bankService.updateStatus(customer.getUsername());
-                    logger.info("Account getting deactivated");
+                    bankService.updateAttempts(customer.getUsername());
+                    logger.info(resourceBundle.getString("passIncorrect")+resourceBundle.getString("accDeactivated"));
+                    exception = new LockedException(resourceBundle.getString("passIncorrect")+resourceBundle.getString("accDeactivated"));
+                    super.setDefaultFailureUrl("/web/login/?error="+resourceBundle.getString("passIncorrect")+resourceBundle.getString("accDeactivated"));
                 }
             }
         }

@@ -1,0 +1,41 @@
+spring.datasource.driverClassName=oracle.jdbc.driver.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:xe
+spring.datasource.username=ABHISHEK MANOJ
+spring.datasource.password=J@nuary200!
+
+spring.jpa.properties.hibernate.show_sql=true
+
+# ddl strategy >> create/ update
+spring.jpa.hibernate.ddl-auto=update
+
+server.port=8082
+
+
+1.Two tables only;
+2.Sequence for address and student; based on which we should attach a relaionshp betweeen the tables;
+3.All scripts should be separated
+Front End:
+4.Beautify the screen
+5.Apply validation (JS)
+6.Field Mandatory
+Back End:
+7.Modularize the code(JSP&Servlet separate from DAO)
+8.User defined exceptions
+9.JUnit
+10.Property File
+11.JDBC connection should come from the property
+12.Encorporate logging(Do not use System.Out.Println())
+13.Dashboard should be below the insert form
+14.Use AJAX to update the dashboard whenever an insertion or deletion occurs so that the page doesn't refresh.
+Business Rule:
+15.Regno and email if its duplicated, then an error message should be displayed on the screen indicating the user that the record is already inserted.
+16.Use SQL JOINS
+17.Add Null Check wherever necessary
+18.JDK 8 features should be added
+19.
+
+
+One jsp
+Donot add input type=submit button
+<button> use this instead
+donot add action attribute in <form>

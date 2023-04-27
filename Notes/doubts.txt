@@ -1,0 +1,7 @@
+Loan addition
+Payee doubt
+Trigger
+Date for approval,rejection,creation.
+Account creation - How many per customer? Should we create a buton in list of accounts page for the customer to open a new account.
+Role-Role table contents? Role creation?
+List all available loans - Should it be the loan details that are existing or the different types of loans available for a particular user.

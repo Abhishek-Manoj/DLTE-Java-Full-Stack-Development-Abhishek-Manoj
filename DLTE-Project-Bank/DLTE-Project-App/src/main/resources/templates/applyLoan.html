@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    Favicon Added-->
+    <link rel="icon" type="image/x-icon" href="/files/favicon.ico">
+<!--    CDNs-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -14,27 +17,13 @@
     //to store the logged in username
     var user;
 
-    //Function to get URL parameter value
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = window.location.search.substring(1),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-            }
-        }
-        return false;
-    };//ajax get method for retrieving username
+    //ajax get method for retrieving username
     $.get("http://localhost:8085/template/username",function (data) {
         user = data
     })
 
-    var loanId = getUrlParameter('id');
+    //Getting the loan ID through session storage
+    var loanId = sessionStorage.getItem("loanSchemeId");
 
     $(document).ready(function () {
         //jQuery event when apply loan button is clicked
@@ -51,8 +40,14 @@
                 if(loanAmount===""|| loanTenure === ""){
                     throw "All fields are mandatory"
                 }
+                else if((loanAmount.indexOf(' ') !== -1)||(loanTenure.indexOf(' ') !== -1)){
+                    throw "Should not contain white spaces"
+                }
                 else if(((/^[^\d]*$/).test(loanAmount))){
                     throw "Amount should be in numbers"
+                }
+                else if(loanTenure<100000){
+                    throw "Minimum Amount : Rs.100000"
                 }
                 else if(loanAmount>1000000){
                     throw "Maximum Amount Eligible : Rs.1000000"
@@ -60,24 +55,28 @@
                 else if(((/^[^\d]*$/).test(loanTenure))){
                     throw "Tenure should be in numbers"
                 }
-                else if(loanTenure>60){
-                    throw "Loans must be closed within 5 years"
+                else if(loanTenure<1){
+                    throw "Minimum loan tenure is 1 month"
+                }
+                else if(loanTenure>60 || loanTenure<1){
+                    throw "Loans must be closed within 5 years(less than or equal to 60)"
+                }
+               else {
+                   // AJAX POST method for applying new loan
+                    $.post("http://localhost:8085/template/createLoan", {
+                        amount: loanAmount,
+                        tenure: loanTenure,
+                        type: loanId,
+                        customer : user,
+                    },function (data) {
+                        $("#error").remove()
+                        $("#responseMessage").append("<div class='row justify-content-center bg-success-subtle text-success rounded-4 p-2 ms-3 me-3 mb-1' id='success'><p class='text-center'>"+data+"</p></div>")
+                    })
                 }
             }
             catch(errmsg){
                 $("#responseMessage").append("<div class='row justify-content-center bg-danger-subtle text-danger rounded-4 p-2 ms-3 me-3 mb-1' id='error'><p class='text-center'>"+errmsg+"</p></div>")
             }
-
-            //ajax get method for applying loan
-            $.post("http://localhost:8085/template/createLoan", {
-                amount: loanAmount,
-                tenure: loanTenure,
-                type: loanId,
-                customer : user,
-            },function (data) {
-                $("#error").remove()
-                $("#responseMessage").append("<div class='row justify-content-center bg-success-subtle text-success rounded-4 p-2 ms-3 me-3 mb-1' id='success'><p class='text-center'>"+data+"</p></div>")
-            })
         })
     })
     //For Displaying the selected loan specifications
@@ -112,41 +111,66 @@
             }
         });
     }
-    //Calling
+    //Calling fetchDetails
     $(function () {
         fetchDetails()
     })
 </script>
+<!--CSS-->
+<style>
+    #heading{
+        background: #0a0058;
+        color: #f7f7f7;
+    }
+
+    #loanForm{
+        background: #85c1ff;
+    }
+
+    .required::after{
+        content: "*";
+        color: red;
+    }
+</style>
 <body class="bg-info-subtle">
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 <!--        Bank Logo-->
         <div class="col-lg-4">
             <img src="/files/Vibebanklogo.png" height="100px" width="350px" />
         </div>
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 d-flex flex-row-reverse">
-            <!--        Back Button-->
-            <a th:href="@{/web/dashboard}"><button class="btn btn-success mt-4 me-2"><i class="bi bi-back"></i>Back</button></a>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-6 d-flex flex-row-reverse">
             <!--        Logout Button-->
-            <a th:href="@{/logout}"><button class="btn btn-danger mt-4 float-end">Logout</button></a>
+            <a th:href="@{/logout}"><button class="btn btn-danger mt-5">Logout</button></a>
+            <!--        Back Button-->
+            <a th:href="@{/web/dashboard}"><button class="btn btn-success mt-5 me-2">Back</button></a>
         </div>
     </div>
 <!--    Heading-->
     <div class="row justify-content-center">
-        <h2 class="text-center bg-primary border-5 border-primary mt-2 rounded-3">LOAN APPLICATION</h2>
+        <h2 class="text-center border-5 border-primary mt-2" id="heading">LOAN APPLICATION</h2>
     </div>
     <div class="row justify-content-center">
 <!--        Loan Application Form-->
+        <div class="col-lg-5">
+<!--            Displays the loan details of the selected loan-->
+            <div class="card bg-info" >
+                <h5 class="card-title text-center rounded-1 text-bg-dark p-1">Loan Specifications</h5>
+                <div id="loanSpec" class="ms-2 me-2">
+
+                </div>
+            </div>
+        </div>
         <div class="col-lg-6">
-            <form class="card bg-dark-subtle">
+            <form class="card" id="loanForm">
                 <h5 class="card-title rounded-2 text-bg-dark text-light text-center p-1">Application Form</h5>
                 <div class="form-group mt-2 ms-3 me-3">
-                    <label>Desired Loan Amount:</label>
+                    <label class="required">Desired Loan Amount:</label>
                     <input type="text" class="form-control" placeholder="Enter amount" name="loanAmount" />
                 </div>
                 <div class="form-group mt-2 ms-3 me-3">
-                    <label>Tenure of Borrowal:</label>
+                    <label class="required">Tenure of Borrowal:</label>
                     <input type="text" class="form-control" placeholder="Enter tenure in months" name="loanTenure" />
                 </div>
                 <div class="d-flex justify-content-around">
@@ -157,15 +181,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-5">
-<!--            Displays the loan details of the selected loan-->
-            <div class="card bg-info" >
-                <h5 class="card-title text-center rounded-1 text-bg-dark p-1">Loan Specifications</h5>
-                <div id="loanSpec" class="ms-2 me-2">
 
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </body>

@@ -27,6 +27,7 @@ public class BankService implements BankOperations, UserDetailsService {
     public Customer getByUsername(String uname) {
         try{
             logger.info("Entered getByUsername() method");
+            logger.info("Username :"+uname);
             Customer customer = jdbcTemplate.queryForObject("select * from customer where username=?",new CustomerMapper(),uname);
             logger.info(customer.toString()+" has been returned to controller");
             return customer;
@@ -41,18 +42,21 @@ public class BankService implements BankOperations, UserDetailsService {
     @Override
     public void updateAttempts(String username) {
         jdbcTemplate.update("update customer set failed_attempts = failed_attempts+1 where username=?",username);
+        logger.info("failed attempts incremented for "+username);
     }
 
 //    Updates the status of the customer when the customer enters incorrect password thrice
     @Override
     public void updateStatus(String username) {
         jdbcTemplate.update("update customer set customer_status = 'inactive' where username = ?",username);
+        logger.info("Status of customer changed to inactive for "+username);
     }
 
 //    Resets the failed attempts value to 0 when the login is successful
     @Override
     public void loginSuccess(String username) {
         jdbcTemplate.update("update customer set failed_attempts = 0 where username = ?",username);
+        logger.info("failed attempts value is reset for "+username);
     }
 
 //    Adds the loan details to the loan table
@@ -64,12 +68,14 @@ public class BankService implements BankOperations, UserDetailsService {
         double loanEmi = (amount * monthlyInterest) / (1 - Math.pow(1 + monthlyInterest, -tenure));
 //        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("")
         jdbcTemplate.update("insert into loan values(loan_app_id_seq.NEXTVAL,?,?,?,?,?)",amount,loanEmi,loanSchemeId,customerId,tenure);
+        logger.info(bundle.getString("loanApplied"));
         return "loanApplied";
     }
 
 //    Lists the available loan schemes
     @Override
     public List<LoanScheme> listLoanSchemes() {
+        logger.info("list of loan schemes retrieval");
         return jdbcTemplate.query("select * from loan_scheme",new LoanSchemeMapper());
     }
 
@@ -93,34 +99,19 @@ public class BankService implements BankOperations, UserDetailsService {
 //    Performs the Login Authentication
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.info("Entered loadByUsername() method");
+        logger.info("Entered loadByUsername() method for"+username);
         Customer customer = getByUsername(username);
 
         if (customer == null){
+            logger.info(bundle.getString("userNotExist"));
             throw new UsernameNotFoundException(bundle.getString("userNotExist"));
         }
-        logger.info("Leaving loadByUsername() method");
         if (customer.getCustomerStatus().equalsIgnoreCase("inactive")){
+            logger.info(bundle.getString("accDeactivated"));
             throw new UsernameNotFoundException(bundle.getString("accDeactivated"));
         }
         return customer;
     }
-
-//    Mapper fo
-//    class LoanMapper implements RowMapper<Loan>{
-//
-//        @Override
-//        public Loan mapRow(ResultSet rs, int rowNum) throws SQLException {
-//            Loan loan = new Loan();
-//            loan.setLoanAppId(rs.getLong("loan_app_id"));
-//            loan.setLoanAmount(rs.getFloat("loan_amount"));
-//            loan.setLoanEmi(rs.getFloat("loan_emi"));
-//            loan.setLoanSchemeId(rs.getLong("loan_scheme_id"));
-//            loan.setCustomerId(rs.getLong("customer_id"));
-//            loan.setLoanTenure(rs.getInt("loan_tenure"));
-//            return loan;
-//        }
-//    }
 
 //    Mapper class for Customer POJO
     class CustomerMapper implements RowMapper<Customer> {

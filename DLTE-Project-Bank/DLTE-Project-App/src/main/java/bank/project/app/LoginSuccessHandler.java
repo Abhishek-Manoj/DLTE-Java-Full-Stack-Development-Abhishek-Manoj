@@ -29,18 +29,9 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     public void onAuthenticationSuccess (HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException{
         Customer customer = (Customer) authentication.getPrincipal();
 //        If the status of the customer is active
-        if (customer.getCustomerStatus().equalsIgnoreCase("active")){
-            bankService.loginSuccess(customer.getUsername());
-            logger.info(resourceBundle.getString("loginSuccess"));
-            super.setDefaultTargetUrl("/web/dashboard");
-
-        }
-        //if the status is inactive
-        else{
-            logger.info(resourceBundle.getString("accDeactivated"));
-            super.setDefaultTargetUrl("/logout");
-//            super.setTargetUrlParameter("login/logout?error="+resourceBundle.getString("accDeactivated"));
-        }
+        bankService.loginSuccess(customer.getUsername());
+        logger.info(resourceBundle.getString("loginSuccess"));
+        super.setDefaultTargetUrl("/web/dashboard");
         super.onAuthenticationSuccess(request,response,authentication);
     }
 }
